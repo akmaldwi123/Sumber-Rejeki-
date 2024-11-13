@@ -33,7 +33,7 @@
                 <th>Nama</th>
                 <th>Jenis</th>
                 <th>Merk</th>
-                <th>Ukuran</th>
+                {{-- <th>Ukuran</th> --}}
                 <th>Stock</th>
                 <th>Satuan</th>
                 <th>Lokasi</th>
@@ -46,7 +46,7 @@
                     <td>{{ $stock->nama }}</td>
                     <td>{{ $stock->jenis }}</td>
                     <td>{{ $stock->merk }}</td>
-                    <td>{{ $stock->ukuran }}</td>
+                    {{-- <td>{{ $stock->ukuran }}</td> --}}
                     <td>{{ $stock->stock }}</td>
                     <td>{{ $stock->satuan }}</td>
                     <td>{{ $stock->lokasi }}</td>

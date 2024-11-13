@@ -63,16 +63,17 @@ class StockController extends Controller
             $imagePath = $request->file('gambar')->store('images/barang', 'public');
         }
 
-        // Simpan data ke database
-        StokBarang::create([
-            'nama' => $request->nama,
-            'jenis' => $request->jenis,
-            'merk' => $request->merk,
-            'stock' => $request->stock,
-            'satuan' => $request->satuan,
-            'lokasi' => $request->lokasi,
-            'gambar' => $imagePath, // Simpan path gambar
-        ]);
+       // Simpan data ke database
+            StokBarang::create([
+                'nama' => $request->nama,
+                'jenis' => $request->jenis,
+                'merk' => $request->merk,
+                'stock' => $request->stock,
+                'satuan' => $request->satuan,
+                'lokasi' => $request->lokasi,
+                'gambar' => $imagePath ?? '', // Set nilai default kosong jika null
+            ]);
+
 
         Alert::success('Added Successfully', 'Sukses Menambahkan Barang.');
         // Redirect ke halaman index dengan pesan sukses
@@ -101,7 +102,7 @@ class StockController extends Controller
             'stock' => 'required|integer',
             'satuan' => 'required|string|max:255',
             'lokasi' => 'required|string|max:255',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
 
         // Cari data barang yang akan diupdate

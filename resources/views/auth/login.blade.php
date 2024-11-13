@@ -23,7 +23,7 @@
 
 <body style="background-image: url('{{ Vite::asset('resources/images/bg.jpg') }}');">
     <div align="center">
-        <img src="{{ Vite::asset('resources/images/TVRI_Jawa_Timur_2023.svg') }}" width="15%" style="margin-top:5%">
+        <img src="{{ Vite::asset('resources/images/TVRI_Jawa_Timur_2023.svg') }}" width="20%" style="margin-top:5%">
         <br><br>
         <div class="container">
             <div style="color:white">

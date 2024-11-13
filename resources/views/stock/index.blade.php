@@ -215,98 +215,97 @@
     </div>
     <!-- Modal Tambah Barang -->
     <div class="modal fade" id="tambahBarangModal" tabindex="-1" aria-labelledby="tambahBarangModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahBarangModalLabel">Tambah Barang</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('stock.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="nama" class="form-label">Nama Barang</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="jenis" class="form-label">Jenis</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="merk" class="form-label">Merk</label>
-                            <input type="text" class="form-control" id="merk" name="merk" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="stock" class="form-label">Stock</label>
-                            <input type="number" class="form-control" id="stock" name="stock" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="satuan" class="form-label">Satuan</label>
-                            <input type="text" class="form-control" id="satuan" name="satuan" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="lokasi" class="form-label">Lokasi</label>
-                            <input type="text" class="form-control" id="lokasi" name="lokasi" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="gambar" class="form-label">Gambar (Opsional)</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </form>
-                </div>
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahBarangModalLabel">Tambah Barang</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('stock.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Barang</label>
+                        <input type="text" class="form-control form-control-sm" id="nama" name="nama" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jenis" class="form-label">Jenis</label>
+                        <input type="text" class="form-control form-control-sm" id="jenis" name="jenis" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="merk" class="form-label">Merk</label>
+                        <input type="text" class="form-control form-control-sm" id="merk" name="merk" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">Stock</label>
+                        <input type="number" class="form-control form-control-sm" id="stock" name="stock" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="satuan" class="form-label">Satuan</label>
+                        <input type="text" class="form-control form-control-sm" id="satuan" name="satuan" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lokasi" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control form-control-sm" id="lokasi" name="lokasi" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gambar" class="form-label">Gambar (Opsional)</label>
+                        <input type="file" class="form-control form-control-sm" id="gambar" name="gambar">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                </form>
             </div>
         </div>
     </div>
+    </div>
+
     <!-- Modal Edit Barang -->
-    <!-- Modal Edit Barang -->
-    <div class="modal fade" id="editBarangModal" tabindex="-1" aria-labelledby="editBarangModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editBarangModalLabel">Edit Barang</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="editBarangModal" tabindex="-1" aria-labelledby="editBarangModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="editBarangModalLabel">Edit Barang</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="editBarangForm" action="" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="id" id="editBarangId">
+                <div class="mb-2">
+                    <label for="editNama" class="form-label">Nama Barang</label>
+                    <input type="text" class="form-control form-control-sm" id="editNama" name="nama" required>
                 </div>
-                <div class="modal-body">
-                    <form id="editBarangForm" action="" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <input type="hidden" name="id" id="editBarangId">
-                        <div class="mb-3">
-                            <label for="editNama" class="form-label">Nama Barang</label>
-                            <input type="text" class="form-control" id="editNama" name="nama" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editJenis" class="form-label">Jenis</label>
-                            <input type="text" class="form-control" id="editJenis" name="jenis" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editMerk" class="form-label">Merk</label>
-                            <input type="text" class="form-control" id="editMerk" name="merk" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="editStock" class="form-label">Stock</label>
-                            <input type="number" class="form-control" id="editStock" name="stock" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editSatuan" class="form-label">Satuan</label>
-                            <input type="text" class="form-control" id="editSatuan" name="satuan" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editLokasi" class="form-label">Lokasi</label>
-                            <input type="text" class="form-control" id="editLokasi" name="lokasi" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editGambar" class="form-label">Gambar (Opsional)</label>
-                            <input type="file" class="form-control" id="editGambar" name="gambar">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
+                <div class="mb-2">
+                    <label for="editJenis" class="form-label">Jenis</label>
+                    <input type="text" class="form-control form-control-sm" id="editJenis" name="jenis" required>
                 </div>
-            </div>
+                <div class="mb-2">
+                    <label for="editMerk" class="form-label">Merk</label>
+                    <input type="text" class="form-control form-control-sm" id="editMerk" name="merk" required>
+                </div>
+                <div class="mb-2">
+                    <label for="editStock" class="form-label">Stock</label>
+                    <input type="number" class="form-control form-control-sm" id="editStock" name="stock" required>
+                </div>
+                <div class="mb-2">
+                    <label for="editSatuan" class="form-label">Satuan</label>
+                    <input type="text" class="form-control form-control-sm" id="editSatuan" name="satuan" required>
+                </div>
+                <div class="mb-2">
+                    <label for="editLokasi" class="form-label">Lokasi</label>
+                    <input type="text" class="form-control form-control-sm" id="editLokasi" name="lokasi" required>
+                </div>
+                <div class="mb-2">
+                    <label for="editGambar" class="form-label">Gambar (Opsional)</label>
+                    <input type="file" class="form-control form-control-sm" id="editGambar" name="gambar">
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            </form>
         </div>
     </div>
+</div>
+</div>
 @endsection

@@ -34,7 +34,7 @@
                 <th>Nama Barang</th>
                 <th>Jenis</th>
                 <th>Merk</th>
-                <th>Ukuran</th>
+                {{-- <th>Ukuran</th> --}}
                 <th>Jumlah Keluar</th>
                 <th>Penerima</th>
                 <th>Keterangan</th>
@@ -48,7 +48,7 @@
                     <td>{{ $barangkeluar->stokBarang->nama ?? 'Tidak Ditemukan' }}</td>
                     <td>{{ $barangkeluar->stokBarang->jenis ?? 'Tidak Ditemukan' }}</td>
                     <td>{{ $barangkeluar->stokBarang->merk ?? 'Tidak Ditemukan' }}</td>
-                    <td>{{ $barangkeluar->stokBarang->ukuran ?? 'Tidak Ditemukan' }}</td>
+                    {{-- <td>{{ $barangkeluar->stokBarang->ukuran ?? 'Tidak Ditemukan' }}</td> --}}
                     <td>{{ $barangkeluar->jumlah }}</td>
                     <td>{{ $barangkeluar->penerima }}</td>
                     <td>{{ $barangkeluar->keterangan }}</td>
