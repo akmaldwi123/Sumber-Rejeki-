@@ -56,6 +56,25 @@ class LoginController extends Controller
         return '/stock';
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        // Redirect berdasarkan role user
+        switch ($user->role) {
+            case 'admin':
+                return redirect('/admin');
+            case 'manager':
+                return redirect('/manager');
+            case 'staffa':
+                return redirect('/staffa');
+            case 'staffb':
+                return redirect('/staffb');
+            case 'project':
+                return redirect('/project');
+            default:
+                return redirect('/unauthorized');
+        }
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

@@ -1,87 +1,113 @@
+/* login.css */
+
 body {
-    font-size: 18px;
-    padding: 20px;
-}
-
-a:hover {
-    cursor: pointer
-}
-
-a:focus {
-    outline: 0
-}
-
-#wrapper {
-    font-family: 'PT Sans Narrow', sans-serif;
-    margin-top: 5%
-}
-
-#wrapper #login-wrapper {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px
-}
-
-#wrapper #login-wrapper img {
-    margin: 0 auto;
-    width: 130px
-}
-
-#wrapper #login-wrapper h2 {
-    font-size: 25px;
-    font-weight: 700;
-    text-transform: uppercase
-}
-
-#wrapper #login-wrapper a {
-    color: blue;
-    display: inline-block;
-    margin-top: 15px
-}
-
-#wrapper #login-wrapper form {
-    margin-top: 20px
-}
-
-#forgotpassword input,
-#wrapper #login-wrapper form input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-bottom: 1px dashed #e5e5e5;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    box-shadow: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    color: #333;
-    display: block;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 18px;
-    outline: 0;
+    margin: 0;
     padding: 0;
-    width: 100%
+    font-family: Arial, sans-serif;
+    background-color: #f3f9f6;
 }
 
-#forgotpassword .btn,
-#wrapper #login-wrapper form .btn {
-    background: blue;
-    color: #fff;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 17px;
-    margin-top: 35px;
-    padding: 15px;
-    text-transform: uppercase
+.main-container {
+    display: flex;
+    height: 100vh;
 }
 
-.errormsg {
-    display: none;
+/* Panel Kiri: Form Login */
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    background: #ffffff;
+}
+
+.logo-container img {
+    max-width: 400px; /* Ubah ukuran logo lebih besar */
+    margin-bottom: 10px; /* Beri jarak dengan teks Welcome */
+
+}
+
+.welcome-text h2 {
+    font-size: 24px;
     margin-top: 10px;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 17px
+    color: #3099AD;
+    text-align: center;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 100px; /* Beri jarak dengan teks Welcome */
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 2px solid #3099AD;
+    outline: none; /* Menghilangkan outline default */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan shadow */
+
+}
+
+
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #3099AD;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan shadow */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Panel Kanan: Ilustrasi */
+.right-panel {
+    flex: 1;
+    background: linear-gradient(to right, #e0f7fa, #80deea);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-panel img {
+    max-width: 80%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        flex: none;
+        width: 100%;
+    }
+
+    .right-panel {
+        flex: none;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .right-panel img {
+        max-width: 100%;
+    }
 }

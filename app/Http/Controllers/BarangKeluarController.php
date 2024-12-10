@@ -22,18 +22,23 @@ class BarangKeluarController extends Controller
 
     public function index()
     {
-        $pageTitle = 'Barang Keluar';
+    $barangKeluar = BarangKeluar::all();
 
-        confirmDelete();
-
-        // Ambil data barang keluar
-        $barangkeluars = BarangKeluar::all();
-
-        // Ambil data stok barang
-        $stock = StokBarang::all()->keyBy('id'); // Mengubah stok barang menjadi array dengan ID sebagai kunci
-
-        return view('transaksidata.barangkeluar.index', compact('barangkeluars', 'stock', 'pageTitle'));
+    if (auth()->user()->role === 'admin') {
+        return view('barangkeluar.admin', compact('barangKeluar'));
+    } elseif (auth()->user()->role === 'manager') {
+        return view('barangkeluar.manager', compact('barangKeluar'));
+    } elseif (auth()->user()->role === 'staffa') {
+        return view('barangkeluar.staffa', compact('barangKeluar'));
+    } elseif (auth()->user()->role === 'staffb') {
+        return view('barangkeluar.staffb', compact('barangKeluar'));
+    } elseif (auth()->user()->role === 'project') {
+        return view('barangkeluar.project', compact('barangKeluar'));
     }
+
+    return redirect('/unauthorized');
+    }
+
 
     /**
      * Show the form for creating a new resource.

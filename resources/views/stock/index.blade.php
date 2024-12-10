@@ -29,8 +29,7 @@
 
 
 
-
-
+<br>
 @section('content')
     @include('layouts.navbar')
     <div id="layoutSidenav">
