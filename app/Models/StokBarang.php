@@ -32,4 +32,12 @@ class StokBarang extends Model
     {
         return $this->hasMany(BarangMasuk::class, 'stock_barang_id');
     }
+    
+
+    public function pembelianBarang()
+    {
+        // Ganti 'pivot_table_name' dengan nama tabel pivot yang benar
+        return $this->belongsToMany(BeliBarang::class, 'beli_barang_stok_barang')
+                    ->withPivot('jumlah');
+    }
 }

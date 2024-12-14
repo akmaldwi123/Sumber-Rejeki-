@@ -7,14 +7,32 @@
         <div class="sb-sidenav-menu">
             <!-- Add your image here -->
             <div class="text-center py-3">
-                <img src="{{ Vite::asset('resources/images/TVRI_Jawa_Timur_2023.svg') }}" alt="Logo" class="img-fluid" style="width: 80%">
+                <img src="{{ Vite::asset('resources/images/SUMBERREJEKEIENERGY.png') }}" alt="Logo" class="img-fluid" style="width: 100%">
             </div>
             <hr>
             <div class="nav">
-                <a class="nav-link" href="{{ route('stock.index') }}">
+                <!-- Link untuk Stock -->
+                <a class="nav-link {{ $currentRouteName == 'stock.index' ? 'active' : '' }}" href="{{ route('stock.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Stock
                 </a>
+
+                <!-- Dropdown untuk Beli Barang -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseBeliBarang"
+                    aria-expanded="false" aria-controls="collapseBeliBarang">
+                    <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                    Beli Barang
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseBeliBarang" aria-labelledby="headingBeliBarang"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ $currentRouteName == 'beli_barang.create' ? 'active' : '' }}" href="{{ route('beli_barang.create') }}">Form Pembelian</a>
+                        <a class="nav-link {{ $currentRouteName == 'beli_barang.index' ? 'active' : '' }}" href="{{ route('beli_barang.index') }}">Daftar Pembelian</a>
+                    </nav>
+                </div>
+
+                <!-- Link Transaksi Data -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
                     aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -24,8 +42,8 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('barangmasuk.index') }}">Barang Masuk / Kembali</a>
-                        <a class="nav-link" href="{{ route('barangkeluar.index') }}">Barang Keluar</a>
+                        <a class="nav-link {{ $currentRouteName == 'barangmasuk.index' ? 'active' : '' }}" href="{{ route('barangmasuk.index') }}">Barang Masuk / Kembali</a>
+                        <a class="nav-link {{ $currentRouteName == 'barangkeluar.index' ? 'active' : '' }}" href="{{ route('barangkeluar.index') }}">Barang Keluar</a>
                     </nav>
                 </div>
             </div>

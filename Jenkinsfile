@@ -4,7 +4,7 @@ pipeline{
                 stage("hello"){
                         steps{
                                 echo "my jenkins pipeline"
-                        }    
+                        }
                 }
         }
 }

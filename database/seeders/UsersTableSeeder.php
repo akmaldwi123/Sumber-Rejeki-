@@ -16,8 +16,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'username' => 'adminuser', // Ganti dengan username admin yang diinginkan
-            'nickname' => 'Admin',     // Ganti dengan nama panggilan admin yang diinginkan
+            'username' => 'admin', // Ganti dengan username admin yang diinginkan
+            'nickname' => 'Adminbos',     // Ganti dengan nama panggilan admin yang diinginkan
             'email' => 'admin1@gmail.com', // Ganti dengan email admin yang diinginkan
             'password' => Hash::make('admin'), // Ganti dengan password yang diinginkan
             'role' => 'admin', // Peran admin
