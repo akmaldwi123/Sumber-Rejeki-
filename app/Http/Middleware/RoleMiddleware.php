@@ -12,6 +12,7 @@ class RoleMiddleware
         if (Auth::check() && Auth::user()->role === $role) {
             return $next($request);
         }
+
         return redirect('/unauthorized'); // Halaman jika user tidak memiliki akses
     }
 }
