@@ -7,6 +7,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\BeliBarangController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ApprovalController;
 
 
 /*
@@ -68,11 +69,4 @@ Route::post('/stock/beli/{id}', [StockController::class, 'beliBarang'])->name('s
 
 // Rute untuk mengambil data barang untuk diedit
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/beli-barang/create', [BeliBarangController::class, 'create'])->name('beli_barang.create');
-    Route::post('/beli-barang/store', [BeliBarangController::class, 'store'])->name('beli_barang.store');
-});
 

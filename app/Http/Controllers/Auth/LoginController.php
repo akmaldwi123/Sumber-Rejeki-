@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -55,6 +56,28 @@ class LoginController extends Controller
     {
         return '/stock';
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+    Log::info('User logged in', ['role' => $user->role]); // Log role user yang login
+
+    switch ($user->role) {
+        case 'admin':
+            return redirect('/admin');
+        case 'manager':
+            return redirect('/manager');
+        case 'staffa':
+            return redirect('/staffa');
+        case 'staffb':
+            return redirect('/staffb');
+        case 'project':
+            return redirect('/project');
+        default:
+            return redirect('/unauthorized');
+        }
+    }
+
+
 
     public function logout(Request $request)
     {

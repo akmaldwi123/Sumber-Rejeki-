@@ -7,7 +7,6 @@
         <div class="sb-sidenav-menu">
             <!-- Add your image here -->
             <div class="text-center py-3">
-                <img src="{{ Vite::asset('resources/images/SUMBERREJEKEIENERGY.png') }}" alt="Logo" class="img-fluid" style="width: 100%">
             </div>
             <hr>
             <div class="nav">
@@ -39,11 +38,14 @@
                     Transaksi Data
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
+
+                 <!-- Link khusus Manager -->
+                @if(Auth::check() && Auth::user()->role === 'manager')
+                <li><a href="{{ route('approval.index') }}">Approval Form</a></li>
+                @endif
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link {{ $currentRouteName == 'barangmasuk.index' ? 'active' : '' }}" href="{{ route('barangmasuk.index') }}">Barang Masuk / Kembali</a>
-                        <a class="nav-link {{ $currentRouteName == 'barangkeluar.index' ? 'active' : '' }}" href="{{ route('barangkeluar.index') }}">Barang Keluar</a>
                     </nav>
                 </div>
             </div>

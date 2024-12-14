@@ -27,39 +27,6 @@
     </script>
     @endpush
 
-
-
-
-
-    @section('content')
-        @include('layouts.navbar')
-        <div id="layoutSidenav">
-            @include('layouts.sidebar')
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Stock Barang</h1>
-                            <ul class="list-inline mb-0 float-end">
-                                <li class="list-inline-item">
-                                    <a href="{{ route('stock.exportPdf') }}"
-                                        class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
-                                            class="fas fa-download fa-sm text-white-50"></i> Download PDF</a>
-                                    <a href="{{ route('stock.exportExcel') }}"
-                                        class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                                            class="fas fa-download fa-sm text-white-50"></i> Download Excel</a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#tambahBarangModal"
-                                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                            class="fas fa-plus fa-sm text-white-50"></i> Tambahkan</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="container-fluid pt-2 px-2">
-                            <div class="bg-white justify-content-between rounded shadow p-4">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered align-middle table-hover table-striped mb-0 datatable"
-                                        id="stockTable" style="width: 100%">
-                                        <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Gambar</th>
