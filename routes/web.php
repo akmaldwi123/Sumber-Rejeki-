@@ -7,7 +7,9 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\BeliBarangController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\ManagerController;
+
+
 
 
 /*
@@ -28,6 +30,13 @@ use App\Http\Controllers\ApprovalController;
 Auth::routes();
 Route::redirect('/', '/stock');
 
+
+Route::middleware(['role:manager'])->group(function () {
+    Route::get('/manager', [ManagerController::class, 'index']);
+});
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('/admin', [ManagerController::class, 'index']);
+});
 //ROUTE LOGIN
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -45,11 +54,11 @@ Route::resource('beli_barang', BeliBarangController::class);
 
 //     // Rute untuk menambahkan stock
 //     Route::post('stock', [StockController::class, 'store'])->name('stock.store');
-    
+
 //     // Rute untuk mengedit stock
 //     Route::get('stock/{id}/edit', [StockController::class, 'edit'])->name('stock.edit');
 //     Route::put('stock/{id}', [StockController::class, 'update'])->name('stock.update');
-    
+
 //     // Rute untuk menghapus stock
 //     Route::delete('stock/{id}', [StockController::class, 'destroy'])->name('stock.destroy');
 // });
@@ -70,3 +79,9 @@ Route::post('/stock/beli/{id}', [StockController::class, 'beliBarang'])->name('s
 // Rute untuk mengambil data barang untuk diedit
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/beli-barang/create', [BeliBarangController::class, 'create'])->name('beli_barang.create');
+    Route::post('/beli-barang/store', [BeliBarangController::class, 'store'])->name('beli_barang.store');
+});

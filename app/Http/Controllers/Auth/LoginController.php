@@ -13,29 +13,37 @@ class LoginController extends Controller
 
     public function __construct()
     {
+        // Middleware untuk memastikan hanya tamu yang dapat mengakses halaman login
         $this->middleware('guest')->except('logout');
     }
 
+    // Menampilkan halaman login
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth.login'); // Pastikan file view ini ada
     }
 
+    // Proses login
     public function login(Request $request)
     {
+        // Validasi input login
         $this->validateLogin($request);
 
+        // Coba autentikasi user
         if ($this->attemptLogin($request)) {
             $request->session()->regenerate();
 
-            return redirect()->intended($this->redirectPath());
+            // Panggil metode authenticated untuk redirect berdasarkan role
+            return $this->authenticated($request, Auth::user());
         }
 
+        // Jika login gagal
         return redirect()->back()->withErrors([
             'username' => 'Username atau Password salah!',
-        ]);
+        ])->withInput();
     }
 
+    // Validasi input
     protected function validateLogin(Request $request)
     {
         $request->validate([
@@ -44,6 +52,7 @@ class LoginController extends Controller
         ]);
     }
 
+    // Coba login menggunakan username dan password
     protected function attemptLogin(Request $request)
     {
         return Auth::attempt([
@@ -52,33 +61,34 @@ class LoginController extends Controller
         ]);
     }
 
+    // Redirect default (tidak dipakai jika ada authenticated)
     public function redirectPath()
     {
-        return '/stock';
+        return $this->redirectTo;
     }
 
+    // Redirect berdasarkan role setelah login berhasil
     protected function authenticated(Request $request, $user)
     {
-    Log::info('User logged in', ['role' => $user->role]); // Log role user yang login
+        Log::info('User logged in', ['role' => $user->role]); // Log role user yang login
 
-    switch ($user->role) {
-        case 'admin':
-            return redirect('/admin');
-        case 'manager':
-            return redirect('/manager');
-        case 'staffa':
-            return redirect('/staffa');
-        case 'staffb':
-            return redirect('/staffb');
-        case 'project':
-            return redirect('/project');
-        default:
-            return redirect('/unauthorized');
+        switch ($user->role) {
+            case 'admin':
+                return redirect('/admin');
+            case 'manager':
+                return redirect('/manager');
+            case 'staffa':
+                return redirect('/staffa');
+            case 'staffb':
+                return redirect('/staffb');
+            case 'project':
+                return redirect('/project');
+            default:
+                return redirect('/unauthorized'); // Jika role tidak dikenal
         }
     }
 
-
-
+    // Proses logout
     public function logout(Request $request)
     {
         Auth::logout();

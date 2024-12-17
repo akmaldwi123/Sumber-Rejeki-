@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -7,12 +6,17 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleMiddleware
 {
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, ...$roles)
     {
-        if (Auth::check() && Auth::user()->role === $role) {
-            return $next($request);
+        if (!Auth::check()) {
+            return redirect('/login');
         }
 
-        return redirect('/unauthorized'); // Halaman jika user tidak memiliki akses
+        $user = Auth::user();
+        if (!in_array($user->role, $roles)) {
+            return redirect('/unauthorized'); // Redirect jika role tidak cocok
+        }
+
+        return $next($request);
     }
 }
