@@ -1,7 +1,7 @@
 pipeline{
         agent any
         stages {
-                stage("hello"){
+                stage("SCM"){
                         steps{
                                 echo "my jenkins pipeline"
                         }
